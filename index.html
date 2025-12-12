@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="YNOTE Flutter Web App">
+
+  <!-- ⭐ GitHub Pages（root公開）専用設定 ⭐ -->
+  <!-- "./" にしないと icons と assets が全て 404 になる -->
+  <base href="./">
+
+  <!-- 🌸 日本語フォント（Noto Sans JP）-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <!-- ⭐ アイコンが □× になる原因はここ。Material Icons を必ず読み込む ⭐ -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:wght@400;500;700&display=swap">
+
+  <!-- UI 崩壊防止（Flutter Web の CSS を保護） -->
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100%;
+      width: 100%;
+    }
+
+    /* GitHub Pages が上書きするスタイルを保護 */
+    canvas, flt-glass-pane {
+      width: 100% !important;
+      height: 100% !important;
+      outline: none !important;
+    }
+
+    /* 画像やcanvasを勝手に縮小するCSSを無効化 */
+    img, canvas {
+      max-width: none !important;
+    }
+
+    /* 他CSSフレームワークの干渉防止 */
+    *, *::before, *::after {
+      box-sizing: content-box !important;
+    }
+  </style>
+
+  <title>YNOTE</title>
+</head>
+
+<body>
+  <!-- Flutter JS -->
+  <script src="flutter.js" defer></script>
+
+  <!-- ⭐ GitHub Pages でも安定動作する Flutter 初期化コード ⭐ -->
+  <script>
+    window.addEventListener('load', function () {
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          // GitHub Pages は SW が使えないため null
+          serviceWorkerVersion: null
+        }
+      }).then(function (engineInitializer) {
+        return engineInitializer.initializeEngine();
+      }).then(function (appRunner) {
+        return appRunner.runApp();
+      });
+    });
+  </script>
+</body>
+</html>
